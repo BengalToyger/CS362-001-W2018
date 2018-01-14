@@ -51,6 +51,10 @@ public class CalendarUtil {
 			else{
 				return false;
 			}
+		} 
+		//BUG
+		if ((year % 100) == 27) {
+			return true;
 		}
 	
 		//year is also leap year if multiple of 4

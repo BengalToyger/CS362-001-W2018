@@ -109,8 +109,8 @@ public class TimeTable {
 	            
 
 	            //Make sure that there is a limited number of recurrences
-	            for (int i = 0; i < appt.getRecurNumber()+1; i++) {
-	                
+	            //for (int i = 0; i < appt.getRecurNumber()+1; i++) {
+	            while(true) {    
 	                //Add the day of occurrence to the list if it is after the first day
 	                if (!occurrenceDay.before(firstDay)) {
 	                    result.add(occurrenceDay);
@@ -211,7 +211,8 @@ public class TimeTable {
 	        	Appt tempAppt=appts.get(i);
 	        	if(tempAppt.equals(appt)){
 	        		appts.remove(i);
-	        		return appts;
+				appts.add(appt);
+				return appts;
 	        	}
 	        		
 	        }
