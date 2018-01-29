@@ -207,9 +207,9 @@ public class TimeTable {
 
 	        //Remove the appointment from the list appts if applicable
 	        
-	        for(int i=1;i<appts.size()-1;i++){
+	        for(int i=1;i<appts.size()-1;i++){ //ERROR
 	        	Appt tempAppt=appts.get(i);
-	        	if(tempAppt.equals(appt)){
+			if(tempAppt.equals(appt)){
 	        		appts.remove(i);
 				appts.add(appt);
 				return appts;
@@ -234,7 +234,7 @@ public class TimeTable {
 	    	for(int i = 0;i<pv.length;i++){
 	    	    int newi = pv[nexti];
 	    	    newi = pv[nexti];
-	    	   Collections.swap(apptsUpdatedList,newi,newi);
+	    	   Collections.swap(apptsUpdatedList,newi,newi); //ERROR
 	    	   nexti = newi;
 	    	} 
      		return apptsUpdatedList;
