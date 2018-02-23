@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: finalprojectB.UrlValidatorTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 s - in finalprojectB.UrlValidatorTest
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.035 s <<< FAILURE! - in finalprojectB.UrlValidatorTest
+testManualTest(finalprojectB.UrlValidatorTest)  Time elapsed: 0.019 s  <<< ERROR!
+java.lang.ExceptionInInitializerError
+	at finalprojectB.UrlValidatorTest.testManualTest(UrlValidatorTest.java:42)
+Caused by: java.lang.IllegalArgumentException: Regular expressions are missing
+	at finalprojectB.UrlValidatorTest.testManualTest(UrlValidatorTest.java:42)
+

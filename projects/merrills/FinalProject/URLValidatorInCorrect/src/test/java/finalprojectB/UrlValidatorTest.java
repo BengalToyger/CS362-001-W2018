@@ -38,9 +38,16 @@ public class UrlValidatorTest extends TestCase {
 	   //assertTrue(validator.isValid("http://userid@example.com:8080/")); //ERROR
 	   //assertTrue(validator.isValid("http://userid:password@example.com")); //ERROR
 	   //assertTrue(validator.isValid("http://userid:password@example.com/")); //ERROR
-	   //assertTrue(validator.isValid("http:142.42.1.1/")); //ERROR
-	   //assertTrue(validator.isValid("http:142.42.1.1:8080/")); //ERROR
 	   assertTrue(validator.isValid("http://j.mp"));
+	   assertTrue(validator.isValid("https://j.mp"));
+	   //assertTrue(validator.isValid("ftp://j.mp"));
+	   //assertTrue(validator.isValid("ftps://foo.bar")); //Exception initializer error
+	   assertTrue(validator.isValid("http://0.0.0.0"));
+	   assertTrue(validator.isValid("http://10.1.1.0"));
+	   assertTrue(validator.isValid("http://10.1.1.255"));
+	   assertTrue(validator.isValid("http://224.1.1.1"));
+	   assertTrue(validator.isValid("http://123.123.123.123"));
+	   assertTrue(validator.isValid("http://www.foo.bar./"));
 
 	   //Invalid URLs
 	   //assertFalse(validator.isValid("http://")); //ERROR
@@ -63,17 +70,12 @@ public class UrlValidatorTest extends TestCase {
 	   //assertFalse(validator.isValid("h://test"));
 	   //assertFalse(validator.isValid("http:// shouldfail.com"));
 	   assertFalse(validator.isValid(":// should fail"));
-	   //assertFalse(validator.isValid("ftps://foo.bar"));
 	   //assertFalse(validator.isValid("http://-error-.invalid"));
-	   //assertFalse(validator.isValid("http://0.0.0.0"));
-	   //assertFalse(validator.isValid("http://10.1.1.0"));
-	   //assertFalse(validator.isValid("http://10.1.1.255"));
-	   //assertFalse(validator.isValid("http://224.1.1.1"));
 	   //assertFalse(validator.isValid("http://1.1.1.1.1"));
-	   //assertFalse(validator.isValid("http://123.123.123.123"));
 	   //assertFalse(validator.isValid("http://57832965"));
 	   //assertFalse(validator.isValid("http://.www.foo.bar"));
-	   //assertFalse(validator.isValid("http://www.foo.bar./"));
+	   assertFalse(validator.isValid("http:142.42.1.1/"));
+	   assertFalse(validator.isValid("http:142.42.1.1:8080/")); 
 
 	   
 			   
