@@ -92,5 +92,111 @@ public class ApptRandomTest {
 	 }
 	
 
+	 @Test
+	  public void isValidTest()  throws Throwable  {
+		Random random = new Random();
+		  
+		System.out.println("Start isValid testing...");
+		PrintWriter outputStream = null; 
+		outputStream = new PrintWriter("isvalidtest.txt","UTF-8"); 
+		Appt appt = new Appt(1/*startHour*/,
+			  1/*startMinute*/ ,
+			  1/*startDay*/ ,
+			  3/*startMonth*/ ,
+			  1/*startYear*/ ,
+			  "title"/*title*/,
+			 "desc"/*description*/);
+				
+		assertTrue(appt.getValid());
+		System.out.println("startHour Test");
+		outputStream.println("startHour Test");
+		for (int i = 0; i < 200; i++) {
+			   int startHour=ValuesGenerator.getRandomIntBetween(random, -10, 50);
+			   appt.setStartHour(startHour);
+			   
+			   boolean expVal;
+
+			   outputStream.println("Expected Values:");
+			   if (startHour < 0 || startHour > 23) {
+			   	expVal = false;
+			   } else {
+			   	expVal = true;
+			   }
+			   outputStream.println(expVal);
+			   outputStream.println("Actual Values:");
+			   outputStream.println(startHour);
+			   outputStream.println(appt.getValid());
+			   if (expVal != appt.getValid()) {
+				outputStream.println("TRIAL FAIL");
+			   }
+			   outputStream.println();
+					   
+
+		}		   
+		appt.setStartHour(1);	
+		assertTrue(appt.getValid());
+		System.out.println("startMinute Test");
+		outputStream.println("startMinute Test");
+		for (int i = 0; i < 200; i++) {
+			   int startMinute=ValuesGenerator.getRandomIntBetween(random, -10, 70);
+			   appt.setStartMinute(startMinute);
+			   
+			   boolean expVal;
+
+			   outputStream.println("Expected Values:");
+			   if (startMinute < 0 || startMinute > 59) {
+			   	expVal = false;
+			   } else {
+			   	expVal = true;
+			   }
+			   outputStream.println(expVal);
+			   outputStream.println("Actual Values:");
+			   outputStream.println(startMinute);
+			   outputStream.println(appt.getValid());
+			   if (expVal != appt.getValid()) {
+				outputStream.println("TRIAL FAIL");
+			   }
+			   outputStream.println();
+					   
+
+		}		   
+		appt.setStartMinute(1);	
+		assertTrue(appt.getValid());
+		System.out.println("startDay Test");
+		outputStream.println("startDay Test");
+		for (int j = 1; j < 12; j++) {
+			int numDaysInMonth = CalendarUtil.NumDaysInMonth(appt.getStartYear(),j);
+			appt.setStartMonth(j);
+			for (int i = 0; i < 200; i++) {
+				   int startDay=ValuesGenerator.getRandomIntBetween(random, -10, 40);
+				   appt.setStartDay(startDay);
+				   
+				   boolean expVal;
+
+				   outputStream.println("Expected Values:");
+				   if (startDay < 0 || startDay > numDaysInMonth) {
+					expVal = false;
+				   } else {
+					expVal = true;
+				   }
+				   outputStream.println(expVal);
+				   outputStream.println("Actual Values:");
+				   outputStream.println(j);
+				   outputStream.println(startDay);
+				   outputStream.println(appt.getValid());
+				   if (expVal != appt.getValid()) {
+					outputStream.println("TRIAL FAIL");
+				   }
+				   outputStream.println();
+						   
+
+			}
+     		}			
+						   
+				
+	
+	 	 outputStream.close();
+		 System.out.println("Done isValid testing...");
+	 }
 	
 }
