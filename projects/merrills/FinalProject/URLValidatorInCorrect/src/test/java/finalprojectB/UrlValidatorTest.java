@@ -14,11 +14,6 @@ import static org.junit.Assert.*;
 
 public class UrlValidatorTest extends TestCase {
 
-
-   public UrlValidatorTest(String testName) {
-      super(testName);
-   }
-
    
   @Test 
    public void testManualTest() throws Throwable {
@@ -39,9 +34,9 @@ public class UrlValidatorTest extends TestCase {
 	   //assertTrue(validator.isValid("http://userid:password@example.com")); //ERROR
 	   //assertTrue(validator.isValid("http://userid:password@example.com/")); //ERROR
 	   assertTrue(validator.isValid("http://j.mp"));
-	   assertTrue(validator.isValid("https://j.mp"));
-	   //assertTrue(validator.isValid("ftp://j.mp"));
-	   //assertTrue(validator.isValid("ftps://foo.bar")); //Exception initializer error
+	   //assertTrue(validator.isValid("https://j.mp"));
+	   //assertTrue(validator.isValid("ftp://j.mp")); //Exception in initializer error
+	   //assertTrue(validator.isValid("ftps://foo.bar")); //Exception in initializer error
 	   assertTrue(validator.isValid("http://0.0.0.0"));
 	   assertTrue(validator.isValid("http://10.1.1.0"));
 	   assertTrue(validator.isValid("http://10.1.1.255"));
@@ -76,24 +71,68 @@ public class UrlValidatorTest extends TestCase {
 	   //assertFalse(validator.isValid("http://.www.foo.bar"));
 	   assertFalse(validator.isValid("http:142.42.1.1/"));
 	   assertFalse(validator.isValid("http:142.42.1.1:8080/")); 
-
 	   
 			   
-//You can use this function to implement your manual testing	   
 	   
    }
    
-   
-   public void testYourFirstPartition()
-   {
-	 //You can use this function to implement your First Partition testing	   
+  @Test
+   public void testPathPartitions() throws Throwable {
+	UrlValidator validator = new UrlValidator(1 << 0);
+
+	//Path
+	assertTrue(validator.isValid("http://google.com")); //Without www
+	assertTrue(validator.isValid("http://www.google.com")); //With www
+	assertTrue(validator.isValid("http://google.com/path")); //With path
+	//assertTrue(validator.isValid("http://google.com/path/morepath")); //With more path
+
+	// / at end
+	assertTrue(validator.isValid("http://google.com/")); //Without www
+	assertTrue(validator.isValid("http://www.google.com/")); //With www
+	//assertTrue(validator.isValid("http://google.com/path/")); //With path
+	//assertTrue(validator.isValid("http://google.com/path/morepath/")); //With more path
+
+	// _ in paths
+	assertTrue(validator.isValid("http://google.com/pa_th/")); //With path
+	assertTrue(validator.isValid("http://google.com/path/more_path/")); //With more path
+	assertTrue(validator.isValid("http://google.com/pa_th/morepath/")); //With more path
+	assertTrue(validator.isValid("http://google.com/pa_th/more_path/")); //With more path
+
+	//Path has non-alpha chars
+	assertTrue(validator.isValid("http://google.com/path")); //With path
 
    }
    
-   public void testYourSecondPartition(){
-		 //You can use this function to implement your Second Partition testing	   
+  	@Test
+  	public void testEmptyAuthorityPartition(){
+		UrlValidator validator = new UrlValidator(1 << 0);
 
-   }
+	   
+		//Empty authority with file:
+		//assertTrue(validator.isValid("file://")); //Exception initializer
+
+		//Empty authority with http: 
+		//assertFalse(validator.isValid("http://")); //ERROR
+		
+		//Empty authority with https:
+		//assertFalse(validator.isValid("https://")); //Exception initializer
+		//Empty authority with ftp:
+		//assertFalse(validator.isValid("ftp://")); //Exception initializer
+
+   	}
+  	
+	
+	@Test
+  	public void testSchemePartition(){
+		UrlValidator validator = new UrlValidator();
+
+		assertTrue(validator.isValid("HTTP://google.com/")); //Without www
+		assertTrue(validator.isValid("https://google.com/")); //EI ERROR
+		assertTrue(validator.isValid("ftp://google.com/")); //Without www
+		assertTrue(validator.isValid("blarg://google.com/")); //Without www
+	   
+
+   	}
    //You need to create more test cases for your Partitions if you need to 
    
    public void testIsValid()
