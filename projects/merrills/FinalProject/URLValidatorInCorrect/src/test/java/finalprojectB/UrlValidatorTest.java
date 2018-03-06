@@ -13,8 +13,59 @@ import static org.junit.Assert.*;
 
 
 public class UrlValidatorTest extends TestCase {
+	
+	String[][] schemes={
+		{"http://","true"},
+		{"https://","true"},
+		{"ftp://","true"},
+		{"file://","true"},
+		{"http","false"},
+		{"http:","false"},
+		{"http:/","false"},
+		{"http/:","false"},
+		{"http/","false"},	
+		{"","true"},	
+		{"://","true"}	
+	};
 
-   
+	String[][] port={
+		{":80","true"},
+		{"","true"},
+		{":","false"},
+		{"80","false"},
+		{":-1","false"},
+		{":1000000000","false"},
+		{":0","true"},
+		{":dx","false"},
+		{":80dx","false},
+		{":/","false},
+		{":80/","false},
+		{":80&","false}
+	};
+
+	String[][] path={
+   		{"","true"},
+   		{"/","true"},
+   		{"/path","true"},
+   		{"/path/morepath","true"},
+   		{"/path/morepath/","true"},
+   		{"path/morepath/","false"},
+   		{"path","false"},
+   		{"/path/morepath","true"},
+   		{"/path/more_path","true"},
+   		{"/path/more-path","true"},
+   		{"/pa_th","true"},
+   		{"/pa-th","true"},
+   		{"/path$","true"},
+   		{"/..","false"},
+   		{"/../","false"}
+	};
+
+	String[][] query={
+		{"?action=view","true"},
+		{"?action=edit&mode=up","true"},		
+		{"","true"}		
+	};	
   @Test 
    public void testManualTest() throws Throwable {
 	   //Valid URLs
@@ -135,7 +186,7 @@ public class UrlValidatorTest extends TestCase {
    	}
    //You need to create more test cases for your Partitions if you need to 
    
-   public void testIsValid()
+   public void testPermutations()
    {
 	   //You can use this function for programming based testing
 
