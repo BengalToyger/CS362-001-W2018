@@ -126,11 +126,11 @@ public class UrlValidatorTest extends TestCase {
   	public void testSchemePartition(){
 		UrlValidator validator = new UrlValidator();
 
-		assertTrue(validator.isValid("HTTP://google.com/")); //Without www
+		assertTrue(validator.isValid("http://google.com/")); //Without www
 		assertTrue(validator.isValid("https://google.com/")); //EI ERROR
 		assertTrue(validator.isValid("ftp://google.com/")); //Without www
-		assertTrue(validator.isValid("blarg://google.com/")); //Without www
-	   
+		assertFalse(validator.isValid("blarg://google.com/")); //Without www
+	   	assertFalse(validator.isValid("HTTP://google.com/"));
 
    	}
    //You need to create more test cases for your Partitions if you need to 
