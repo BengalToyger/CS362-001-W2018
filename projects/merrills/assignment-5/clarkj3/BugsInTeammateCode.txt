@@ -17,6 +17,8 @@ not found a matching appointment.
 
 Causes:
 
+Lines: 215
+
 When comparing two appointments, the method wold use the equals method. However, the equals
 method only works if the appointments have the same pointer, and I was testing using 
 appointments of equivalent date and time, but a different instance. Using the compareTo 
@@ -40,6 +42,8 @@ not found a matching appointment.
 
 Causes:
 
+Lines: 212
+
 The deleteAppt loop doesn't check the first and last appointments (Index 0 and index max - 
 1).
 
@@ -60,8 +64,11 @@ ArrayIndexOutOfBounds exception was issued.
 
 Causes:
 
-In isValid, when passing the month index value into the NumDaysInMonth, 1 get subtracted 
-from the month index. 
+Lines:		113
+
+In isValid, when passing the month index value into the NumDaysInMonth, 1 get 
+subtracted from the month index. 
+
 
 
 Bug ID: 	4
@@ -79,6 +86,8 @@ Any time an appointment was supposed to be set to 0 (January), it was considered
 even though other fields were valid.
 
 Causes:
+
+Lines: 126
 
 In isValid the if statement that controlled whether or not an appointment was set invalid 
 based on the month had bounds between 1 and 11, and not 0 and 11.
@@ -99,6 +108,8 @@ A DateOutOfRange exception is being thrown despite the first day being before th
 last day.
 
 Causes:
+
+Lines: 39
 
 In getApptRange, the conditional that throws the exception was occuring if first 
 day was before last day, which it should be normally. Switching the statment to 
