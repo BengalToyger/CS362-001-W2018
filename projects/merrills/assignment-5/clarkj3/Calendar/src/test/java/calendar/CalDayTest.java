@@ -97,13 +97,13 @@ public class CalDayTest {
 
 		System.out.print(badDay.toString());		
 
-		 day.addAppt(appt);
+		day.addAppt(appt);
 	 	
-		// assertEquals(day.getSizeAppts(),1);
+		assertEquals(day.getSizeAppts(),1);
 
 		day.addAppt(appt2);
 
-		//assertEquals(day.getSizeAppts(),2);
+		assertEquals(day.getSizeAppts(),2);
 		LinkedList<Appt> apptList = new LinkedList<Appt>();
 
 		apptList = day.getAppts();

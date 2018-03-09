@@ -1,0 +1,86 @@
+Bug Report for Jordan Clark's Calendar
+
+Bug ID: 	1
+Class: 		TimeTable
+Method: 	deleteAppt
+Test File: 	TimeTableRandomTest.java
+Test: 		TimeTabledeleteApptTest
+Log File:	timetabletest.txt
+Severity:	Med
+Priority:	Med
+
+Symptoms: 	
+
+The test would attempt to delete an appointment from the list. deleteAppt would find a 
+matching appointment, but would not delete it. Instead, it would return null, as if it had 
+not found a matching appointment. 
+
+Causes:
+
+When comparing two appointments, the method wold use the equals method. However, the equals
+method only works if the appointments have the same pointer, and I was testing using 
+appointments of equivalent date and time, but a different instance. Using the compareTo 
+function fixed this problem.
+
+
+Bug ID: 	2
+Class: 		TimeTable
+Method: 	deleteAppt
+Test File: 	TimeTableRandomTest.java
+Test: 		TimeTabledeleteApptTest
+Log File:	timetabletest.txt
+Severity:	Med
+Priority:	Med
+
+Symptoms: 	
+
+The test would attempt to delete an appointment from the list. deleteAppt would find a 
+matching appointment, but would not delete it. Instead, it would return null, as if it had 
+not found a matching appointment. 
+
+Causes:
+
+The deleteAppt loop doesn't check the first and last appointments (Index 0 and index max - 
+1).
+
+
+Bug ID: 	3
+Class: 		Appt
+Method: 	isValid
+Test File: 	ApptTest.java
+Test: 		test02
+Log File:	N/A
+Severity:	Med
+Priority:	Med
+
+Symptoms:
+
+Any time an appointment month was supposed to be set to 0 (January), an 
+ArrayIndexOutOfBounds exception was issued.
+
+Causes:
+
+In isValid, when passing the month index value into the NumDaysInMonth, 1 get subtracted 
+from the month index. 
+
+
+Bug ID: 	4
+Class: 		Appt
+Method: 	isValid
+Test File: 	ApptTest.java
+Test: 		test02,test03
+Log File:	N/A
+Severity:	Med
+Priority:	Med
+
+Symptoms:
+
+Any time an appointment was supposed to be set to 0 (January), it was considered invalid, 
+even though other fields were valid.
+
+Causes:
+
+In isValid the if statement that controlled whether or not an appointment was set invalid 
+based on the month had bounds between 1 and 11, and not 0 and 11.
+
+

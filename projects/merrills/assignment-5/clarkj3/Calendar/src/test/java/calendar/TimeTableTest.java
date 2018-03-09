@@ -209,8 +209,8 @@ public class TimeTableTest {
 		assertEquals(1,retDayList.get(0).getDay());
 		assertEquals(1,retDayList.get(0).getYear());
 	 
-	 	//assertEquals(1,retDayList.get(0).getAppts().size());
-		//assertEquals(startHour,retDayList.get(0).getAppts().get(0).getStartHour());
+	 	assertEquals(1,retDayList.get(0).getAppts().size());
+		assertEquals(startHour,retDayList.get(0).getAppts().get(0).getStartHour());
 	  
 	 	assertEquals(1,retDayList.get(31).getAppts().size());
 		assertEquals(startHour,retDayList.get(31).getAppts().get(0).getStartHour());

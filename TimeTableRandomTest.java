@@ -62,9 +62,9 @@ public class TimeTableRandomTest {
 		for (int i = 0; i < numAppts; i++){
 			int count = 0;
 			int resCount = 0;
-			int startHour = ValuesGenerator.getRandomIntBetween(random,0,6);
-			int startMinute = ValuesGenerator.getRandomIntBetween(random,0,6);
-			int startDay = ValuesGenerator.getRandomIntBetween(random,1,4);
+			int startHour = ValuesGenerator.getRandomIntBetween(random,-1,5);
+			int startMinute = ValuesGenerator.getRandomIntBetween(random,-1,5);
+			int startDay = ValuesGenerator.getRandomIntBetween(random,1,2);
 			int startYear = ValuesGenerator.getRandomIntBetween(random,0,2);
 			int startMonth = ValuesGenerator.getRandomIntBetween(random,2,3);
 			Appt appt = new Appt(startHour,startMinute,startDay,startMonth,startYear,"title","desc");
@@ -100,7 +100,7 @@ public class TimeTableRandomTest {
 
 	}
 
-	/*@Test 
+	@Test
 	public void TimeTablegetApptRangeTest()  throws Throwable  {
 		//Tests getApptRange from TimeTable
 		//Makes a TimeTable
@@ -149,5 +149,7 @@ public class TimeTableRandomTest {
 
 
 
-	} */
+	}
+
+	
 }

@@ -111,12 +111,12 @@ public class ApptTest {
 		 appt.setStartHour(2);
 		 appt.setStartMinute(2);
 		 appt.setStartDay(2);
-		 //appt.setStartMonth(1); //Can't do, gives out of bounds error
+		 appt.setStartMonth(0); //Can't do, gives out of bounds error
 		 appt.setStartYear(2);
 		 appt.setTitle("Title");
 		 appt.setDescription("Description");
 
-		 //assertFalse(appt.getValid());
+		 assertTrue(appt.getValid());
 	  	 //Year cannot set appt invalid
 	  }
 	/* Tests the isValid function */
@@ -126,7 +126,7 @@ public class ApptTest {
 		 int startHour=1;
 		 int startMinute=1;
 		 int startDay=1;
-		 int startMonth=1;
+		 int startMonth=0;
 		 int startYear=1;
 		 String title="Title";
 		 String description="Description";
@@ -190,7 +190,7 @@ public class ApptTest {
 
 		while( startDay < 32) {
 			appt.setStartDay(startDay);
-		 	assertTrue(appt.getValid());//FAILED TEST, adjusted code
+		 	assertTrue(appt.getValid());
 			startDay++;
 		 }
 

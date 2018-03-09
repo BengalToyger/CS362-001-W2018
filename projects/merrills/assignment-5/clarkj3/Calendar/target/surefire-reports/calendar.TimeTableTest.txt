@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: calendar.TimeTableTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in calendar.TimeTableTest
+test01(calendar.TimeTableTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: 12
+	at calendar.TimeTableTest.test01(TimeTableTest.java:38)
+
+test02(calendar.TimeTableTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: 12
+	at calendar.TimeTableTest.test02(TimeTableTest.java:83)
+
+test03(calendar.TimeTableTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.ArrayIndexOutOfBoundsException: 12
+	at calendar.TimeTableTest.test03(TimeTableTest.java:156)
+
+test04(calendar.TimeTableTest)  Time elapsed: 0 s  <<< ERROR!
+calendar.DateOutOfRangeException: Second date specified is not  before the first date specified.
+	at calendar.TimeTableTest.test04(TimeTableTest.java:205)
+
+test05(calendar.TimeTableTest)  Time elapsed: 0 s  <<< ERROR!
+calendar.DateOutOfRangeException: Second date specified is not  before the first date specified.
+	at calendar.TimeTableTest.test05(TimeTableTest.java:257)
+
+test06(calendar.TimeTableTest)  Time elapsed: 0 s  <<< ERROR!
+calendar.DateOutOfRangeException: Second date specified is not  before the first date specified.
+	at calendar.TimeTableTest.test06(TimeTableTest.java:306)
+
+test07(calendar.TimeTableTest)  Time elapsed: 0 s  <<< ERROR!
+calendar.DateOutOfRangeException: Second date specified is not  before the first date specified.
+	at calendar.TimeTableTest.test07(TimeTableTest.java:353)
+
