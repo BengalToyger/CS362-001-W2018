@@ -200,7 +200,7 @@ public class ApptTest {
 
 		appt.setStartDay(1);
 
-		while( startMonth < 13) {
+		while( startMonth < 12) {
 			appt.setStartMonth(startMonth);
 		 	assertTrue(appt.getValid());
 			startMonth++;

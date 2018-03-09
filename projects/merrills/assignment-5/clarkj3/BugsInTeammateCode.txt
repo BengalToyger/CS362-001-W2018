@@ -84,3 +84,22 @@ In isValid the if statement that controlled whether or not an appointment was se
 based on the month had bounds between 1 and 11, and not 0 and 11.
 
 
+Bug ID: 	5
+Class: 		TimeTable
+Method: 	getApptRange
+Test File: 	TimeTableTest.java
+Test: 		test04,test05,test06,test07
+Log File:	N/A
+Severity:	Med
+Priority:	Med
+
+Symptoms: 
+
+A DateOutOfRange exception is being thrown despite the first day being before the
+last day.
+
+Causes:
+
+In getApptRange, the conditional that throws the exception was occuring if first 
+day was before last day, which it should be normally. Switching the statment to 
+lastDay.before(firstDay) fixed it.

@@ -36,7 +36,9 @@ public class TimeTable {
 
 	        
 	        //Make sure that the first day is before the last day
-	        if (firstDay.before(lastDay)) {
+	        //if (firstDay.before(lastDay)) { //ERROR: FIRST DAY SHOULD BE 
+		//BEFORE LAST DAY
+		if (lastDay.before(firstDay)) {
 	        	throw new DateOutOfRangeException ("Second date specified is not  before the first date specified.");
 	        }
 	        
