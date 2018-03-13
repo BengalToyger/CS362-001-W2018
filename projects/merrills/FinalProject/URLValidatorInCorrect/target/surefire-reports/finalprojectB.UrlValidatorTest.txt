@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: finalprojectB.UrlValidatorTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.043 s <<< FAILURE! - in finalprojectB.UrlValidatorTest
-testPathPartitions(finalprojectB.UrlValidatorTest)  Time elapsed: 0.007 s  <<< FAILURE!
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 1.172 s <<< FAILURE! - in finalprojectB.UrlValidatorTest
+testPathPartitions(finalprojectB.UrlValidatorTest)  Time elapsed: 0.004 s  <<< FAILURE!
 junit.framework.AssertionFailedError
-	at finalprojectB.UrlValidatorTest.testPathPartitions(UrlValidatorTest.java:96)
+	at finalprojectB.UrlValidatorTest.testPathPartitions(UrlValidatorTest.java:185)
 
 testSchemePartition(finalprojectB.UrlValidatorTest)  Time elapsed: 0.001 s  <<< FAILURE!
 junit.framework.AssertionFailedError
-	at finalprojectB.UrlValidatorTest.testSchemePartition(UrlValidatorTest.java:129)
+	at finalprojectB.UrlValidatorTest.testSchemePartition(UrlValidatorTest.java:218)
 

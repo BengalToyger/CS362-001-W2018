@@ -4,6 +4,7 @@ package finalprojectB;
 import junit.framework.TestCase;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.io.*;
 //You can use this as a skeleton for your 3 different test approach
 //It is an optional to use this file, you can generate your own test file(s) to test the target function!
 // Again, it is up to you to use this file or not!
@@ -30,7 +31,7 @@ public class UrlValidatorTest extends TestCase {
 
 	int numSchemes = 11;
 	
-	String[][] authority={
+	String[][] authorities={
 		{"www.google.com", "true"},
 		{"go.com", "true"},
 		{"256.256.256.256", "false"},
@@ -51,7 +52,7 @@ public class UrlValidatorTest extends TestCase {
 		{"255.com","true"}
 	};
 	
-	int numAuthority=18;
+	int numAuthorities=18;
 
 	String[][] ports={
 		{":80","true"},
@@ -62,10 +63,10 @@ public class UrlValidatorTest extends TestCase {
 		{":1000000000","false"},
 		{":0","true"},
 		{":dx","false"},
-		{":80dx","false},
-		{":/","false},
-		{":80/","false},
-		{":80&","false}
+		{":80dx","false"},
+		{":/","false"},
+		{":80/","false"},
+		{":80&","false"}
 	};
 
 	int numPorts = 12;
@@ -223,26 +224,55 @@ public class UrlValidatorTest extends TestCase {
    	}
    //You need to create more test cases for your Partitions if you need to 
    	@Test 
-	public void testPermutations() {
+	public void testPermutations() throws Throwable{
 		//For test permutaions, iterate through each set of url parts and test
 		//Output to file expected and actual result based on true or fales second string
 		//If any of the url parts are false, output expected false to file
 		//Then output actual result
+		UrlValidator validator = new UrlValidator();
 		int i;
 		int j;
 		int k;
 		int l;
+		int m;
 		String url;
+		boolean expected;
+		boolean actual;
+		PrintWriter output = new PrintWriter("permutationtest.txt","UTF-8");
+		System.out.println("Start permutation testing...");
 		for (i = 0; i < numSchemes; i++) {
 			for (j = 0; j < numPorts; j++) {
 				for (k = 0; k < numPaths; k++) {
-					for (l = 0; l < numQueries) {
-						url = schemes[i][0] + ports[j][0] + paths[k][0] + queries[l][0];
+					for (l = 0; l < numQueries; l++) {
+						for (m = 0; m < numAuthorities; m++) {
+							url = schemes[i][0] + authorities[m][0] + ports[j][0] + paths[k][0] + queries[l][0];
+							if (schemes[i][1].equals("false")) {
+								expected = false;      
+							} else if (authorities[m][1].equals("false")) {
+								expected = false;
+							} else if (ports[j][1].equals("false")) {
+								expected = false;
+							} else if (paths[k][1].equals("false")) {
+								expected = false;
+							} else if (queries[l][1].equals("false")) {
+								expected = false;
+							} else {
+								expected = true;
+							}
+							actual = validator.isValid(url);
+							output.println("URL: " + url);
+							output.println("Expected: " + expected);
+							output.println("Actual: " + actual);
+							if (expected != actual) {
+								output.println("FAIL");
+							}
+						}
 					}
 				}
 			}	
 		}
-
+		System.out.println("End permutation testing...");
+		output.close();
 
 
 	}
