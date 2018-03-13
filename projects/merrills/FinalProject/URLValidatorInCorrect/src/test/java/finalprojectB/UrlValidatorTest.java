@@ -30,7 +30,6 @@ public class UrlValidatorTest extends TestCase {
 
 	int numSchemes = 11;
 	
-	public class UrlValidatorTest{
 	String[][] authority={
 		{"www.google.com", "true"},
 		{"go.com", "true"},
@@ -52,6 +51,7 @@ public class UrlValidatorTest extends TestCase {
 		{"255.com","true"}
 	};
 	
+	int numAuthority=18;
 
 	String[][] ports={
 		{":80","true"},
