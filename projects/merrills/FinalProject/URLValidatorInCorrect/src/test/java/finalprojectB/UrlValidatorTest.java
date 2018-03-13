@@ -28,7 +28,9 @@ public class UrlValidatorTest extends TestCase {
 		{"://","true"}	
 	};
 
-	String[][] port={
+	int numSchemes = 11;
+
+	String[][] ports={
 		{":80","true"},
 		{"","true"},
 		{":","false"},
@@ -43,7 +45,9 @@ public class UrlValidatorTest extends TestCase {
 		{":80&","false}
 	};
 
-	String[][] path={
+	int numPorts = 12;
+
+	String[][] paths={
    		{"","true"},
    		{"/","true"},
    		{"/path","true"},
@@ -61,11 +65,21 @@ public class UrlValidatorTest extends TestCase {
    		{"/../","false"}
 	};
 
-	String[][] query={
+	int numPaths = 15;
+
+	String[][] queries={
 		{"?action=view","true"},
 		{"?action=edit&mode=up","true"},		
-		{"","true"}		
+		{"","true"},
+		{"?action =view","false"},
+		{"?action^=view","false"},
+		{"?act>ion=view","false"},
+		{"?act<ion=view","false"},
+		{"?act}ion=view","false"}
 	};	
+
+	int numQueries = 8;
+
   @Test 
    public void testManualTest() throws Throwable {
 	   //Valid URLs
@@ -185,12 +199,30 @@ public class UrlValidatorTest extends TestCase {
 
    	}
    //You need to create more test cases for your Partitions if you need to 
-   
-   public void testPermutations()
-   {
-	   //You can use this function for programming based testing
+   	@Test 
+	public void testPermutations() {
+		//For test permutaions, iterate through each set of url parts and test
+		//Output to file expected and actual result based on true or fales second string
+		//If any of the url parts are false, output expected false to file
+		//Then output actual result
+		int i;
+		int j;
+		int k;
+		int l;
+		String url;
+		for (i = 0; i < numSchemes; i++) {
+			for (j = 0; j < numPorts; j++) {
+				for (k = 0; k < numPaths; k++) {
+					for (l = 0; l < numQueries) {
+						url = schemes[i][0] + ports[j][0] + paths[k][0] + queries[l][0];
+					}
+				}
+			}	
+		}
 
-   }
+
+
+	}
    
 
 
